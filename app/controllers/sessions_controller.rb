@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  
+  skip_before_action :check_login, only: [:new, :create]
+
   def new
   end
 
@@ -12,6 +15,7 @@ class SessionsController < ApplicationController
       redirect_to "/sessions/new"
     end
   end
+  
   def destroy
     reset_session
     redirect_to "/sessions/new"

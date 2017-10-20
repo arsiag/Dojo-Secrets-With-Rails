@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+
+  skip_before_action :check_login, only: [:new, :create]
+  before_action :check_user, only: [:show, :edit, :update, :destroy]
+
   def new
   end
 
@@ -47,6 +51,12 @@ class UsersController < ApplicationController
 
     def user_params_update
       params.require(:user).permit(:name, :email)
+    end
+
+    def check_user
+      if current_user != User.find(params[:id])
+        redirect_to "/users/#{session[:user_id]}" 
+      end
     end
 
 end

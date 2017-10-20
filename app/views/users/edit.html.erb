@@ -1,6 +1,7 @@
 
 
 <div class="formarea">
+    <p class="link"> <a href="/users/<%= current_user.id %>">User page</a> </p>
     <h1>Edit User</h1>
     <form action="/users/<%= @user.id %>" method="post">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">

@@ -10,7 +10,7 @@ class LikesController < ApplicationController
 
   def destroy
     @like = Like.find(params[:id])
-    @like.destroy if current_user === @like.user
+    @like.destroy if current_user == @like.user
     redirect_to "/secrets"  
   end
 
